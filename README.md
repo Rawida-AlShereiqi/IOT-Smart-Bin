@@ -1,7 +1,12 @@
 # IoT Smart Bin
 
 ## Overview
-The IoT Smart Bin is an innovative garbage collection system designed to automate waste disposal using IoT technology. The system offers a hands-free experience by automatically opening and closing the bin lid when someone approaches, and it provides real-time monitoring of the bin's fill level. When the bin is full, a notification is sent to the municipal workers via the Blynk application, ensuring timely collection.
+
+The IoT Smart Bin is a smart waste management solution designed to automate the process of opening and closing a garbage collector without the need for physical contact. Using IoT technology, the bin can detect a person’s proximity and open automatically when someone approaches to dispose of waste, closing shortly after to maintain cleanliness. Additionally, the bin monitors its fill level using an ultrasonic sensor. When the bin is full, it sends an alert via the Blynk app, notifying maintenance personnel that it requires emptying.
+
+A buzzer serves as an additional alert mechanism, emitting a sound when the bin reaches maximum capacity. This sound notification helps ensure that the bin does not overflow and that waste is promptly collected, improving hygiene and waste management efficiency.
+
+
 
 ## Features
 - Automatic Lid Operation: The bin lid opens automatically when a person approaches and closes after 5 seconds.
