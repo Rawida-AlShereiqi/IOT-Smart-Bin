@@ -40,5 +40,5 @@ The IoT Smart Bin is an innovative garbage collection system designed to automat
 This project is designed to work within Tinkercad, allowing users to explore and experiment with the general concept. 
 You can try it out to better understand the functionality and overall idea behind the project. 
 
-![Click here](https://www.tinkercad.com/things/99JqoPQZ5KY-iot-smart-bin-?sharecode=pqr8HvEi0MeLVdUHV7Rw3ov7YVxDQipKlJSb1PkH68g)
+### [Click here](https://www.tinkercad.com/things/99JqoPQZ5KY-iot-smart-bin-?sharecode=pqr8HvEi0MeLVdUHV7Rw3ov7YVxDQipKlJSb1PkH68g)
 
