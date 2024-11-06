@@ -33,9 +33,9 @@ The IoT Smart Bin is an innovative garbage collection system designed to automat
 - Wire.h: For I2C communication with the LCD display.
 - LiquidCrystal_I2C.h: To manage the I2C LCD screen.
 
-![IOT-BIN](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/IOT-BIN.PNG)
+![IOT-BIN](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/img/IOT-BIN.PNG)
 
-![IOT-BIN](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/Blynk.PNG)
+![IOT-BIN](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/img/Blynk.PNG)
 
 
 ### [Click here](https://wokwi.com/projects/413275697202905089)
@@ -49,4 +49,4 @@ You can try it out to better understand the functionality and overall idea behin
 ### [Click here](https://www.tinkercad.com/things/99JqoPQZ5KY-iot-smart-bin-?sharecode=pqr8HvEi0MeLVdUHV7Rw3ov7YVxDQipKlJSb1PkH68g)
 
 
-![Smart-Bin](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/Smart-Bin.PNG)
+![Smart-Bin](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/img/Smart-Bin.PNG)
