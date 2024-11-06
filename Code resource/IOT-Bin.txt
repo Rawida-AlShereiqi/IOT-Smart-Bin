@@ -1,0 +1,128 @@
+#include <WiFi.h>
+#include <BlynkSimpleEsp32.h>
+#include <Servo.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+char auth[] = "nQlZZlRUYEOB5fssExvXL1dFF-vJfXEi"; 
+char ssid[] = "AWASER";                            
+char pass[] = "49018431";                          
+
+Servo servo;
+LiquidCrystal_I2C lcd(0x27, 16, 2); 
+
+#define binTrigPin 13 
+#define binEchoPin 12 
+#define buzzerPin 11 
+
+#define personTrigPin 18  
+#define personEchoPin 19  
+
+long binDuration, binDistance;
+long personDuration, personDistance;
+bool lidOpen = false;
+
+void setup() {
+  Blynk.begin(auth, ssid, pass);
+
+  servo.attach(15);  
+  servo.write(10); 
+
+  pinMode(binTrigPin, OUTPUT); 
+  pinMode(binEchoPin, INPUT); 
+  pinMode(buzzerPin, OUTPUT); 
+
+  pinMode(personTrigPin, OUTPUT);  
+  pinMode(personEchoPin, INPUT);   
+
+  lcd.init();                  
+  lcd.backlight();             
+  lcd.setCursor(0, 0);
+  lcd.print("Smart Bin Ready"); 
+}
+
+void loop() {
+  Blynk.run();
+
+  measureBinDistance();
+  measurePersonDistance();
+
+  int fillPercentage = calculateFillPercentage(binDistance);
+  displayFillLevel(fillPercentage);
+
+  Blynk.virtualWrite(V2, fillPercentage); 
+
+  if (fillPercentage >= 100) {
+    Blynk.notify("Smart Bin is Full");
+    triggerBuzzer();
+    closeLid();  
+  } else if (personDistance <= 20 && !lidOpen) {  
+    openLid();
+  } else if (personDistance > 20 && lidOpen) {  
+    closeLid();
+  }
+}
+
+void measureBinDistance() {
+  digitalWrite(binTrigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(binTrigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(binTrigPin, LOW);
+
+  binDuration = pulseIn(binEchoPin, HIGH);
+  binDistance = binDuration * 0.034 / 2; 
+
+  Blynk.virtualWrite(V1, binDistance); 
+}
+
+void measurePersonDistance() {
+  digitalWrite(personTrigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(personTrigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(personTrigPin, LOW);
+
+  personDuration = pulseIn(personEchoPin, HIGH);
+  personDistance = personDuration * 0.034 / 2;  
+}
+
+int calculateFillPercentage(int distance) {
+  int maxDistance = 300; 
+  int minDistance = 18;  
+
+  int percentage = map(distance, minDistance, maxDistance, 100, 0);
+  if (percentage > 100) percentage = 100; 
+  if (percentage < 0) percentage = 0; 
+
+  return percentage;
+}
+
+void displayFillLevel(int percentage) {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Fill Level:");
+  lcd.print(percentage);
+  lcd.print("%");
+  
+  lcd.setCursor(0, 1);
+  lcd.print("Dist:");
+  lcd.print(binDistance);
+  lcd.print("cm");
+}
+
+void openLid() {
+  servo.write(90);   
+  lidOpen = true;
+}
+
+void closeLid() {
+  servo.write(10);   
+  lidOpen = false;
+}
+
+void triggerBuzzer() {
+  digitalWrite(buzzerPin, HIGH);  
+  delay(2000);                    
+  digitalWrite(buzzerPin, LOW);   
+}
