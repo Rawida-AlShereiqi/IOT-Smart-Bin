@@ -55,3 +55,9 @@ You can try it out to better understand the functionality and overall idea behin
 
 
 ![Smart-Bin](https://github.com/Rawida-AlShereiqi/IOT-Smart-Bin/blob/refresh-2019/img/Smart-Bin.PNG)
+
+
+## Demo Video
+
+[Watch the project demo video](https://drive.google.com/drive/folders/1scEsSNCpENCn8uHwS4XJMw4WXljS7Zlk?usp=sharing)
+
